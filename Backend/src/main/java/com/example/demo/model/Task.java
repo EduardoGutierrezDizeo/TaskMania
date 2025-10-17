@@ -27,4 +27,8 @@ public class Task {
 
     private boolean estado;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")  // crea la columna user_id en la tabla task
+    private User user;
+
 }

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name="users", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"email"})
@@ -26,5 +28,8 @@ public class User {
     private String email;
 
     private String telefono;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Task> tasks;
 
 }
