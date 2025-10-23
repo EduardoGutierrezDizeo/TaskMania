@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-// Coincide con tus DTOs Java
 export interface Task {
   id?: number;
   nombre: string;
@@ -15,16 +14,12 @@ export interface Task {
 })
 export class TaskService {
 
-  private apiUrl = 'http://localhost:8080/task'; 
+  private apiUrl = 'http://localhost:8080/task';
 
   constructor(private http: HttpClient) {}
 
   getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(this.apiUrl);
-  }
-
-  getTask(id: number): Observable<Task> {
-    return this.http.get<Task>(`${this.apiUrl}/${id}`);
   }
 
   addTask(task: Task): Observable<Task> {
