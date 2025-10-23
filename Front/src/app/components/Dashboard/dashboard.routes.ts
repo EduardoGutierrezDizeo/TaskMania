@@ -2,7 +2,7 @@ import { Routes } from "@angular/router";
 
 export default [
     {
-    path: 'login',
+    path: 'dashboard',
     loadComponent: () =>
       import('./dashboard/dashboard.component').then((m) => m.DashboardComponent)
   },
