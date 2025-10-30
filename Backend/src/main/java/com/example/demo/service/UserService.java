@@ -22,6 +22,8 @@ public class UserService {
         entity.setNombre(request.getNombre());
         entity.setEmail(request.getEmail());
         entity.setTelefono(request.getTelefono());
+        entity.setPassword(request.getPassword());
+
 
         User guardado = repository.save(entity);
         return new UserResponse(guardado.getId(), guardado.getNombre(), guardado.getEmail(), guardado.getTelefono());
@@ -54,6 +56,18 @@ public class UserService {
         User actualizado = repository.save(entity);
         return new UserResponse(actualizado.getId(), actualizado.getNombre(), actualizado.getEmail(), actualizado.getTelefono());
     }
+
+    public UserResponse login(String email, String password) {
+    User user = repository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+    if (!user.getPassword().equals(password)) {
+        throw new RuntimeException("Contraseña incorrecta");
+    }
+
+    return new UserResponse(user.getId(), user.getNombre(), user.getEmail(), user.getTelefono());
+    }
+
 
     public void eliminar(Long id) {
         if(!repository.existsById(id)){
