@@ -5,7 +5,7 @@
     </div>
 
     <div class="w-1/2 h-[100vh] bg-[#7B337E] flex justify-center items-center">
-        <form class="bg-[#F5D5E0] w-[600px] h-[500px] flex flex-col rounded-3xl" action="">
+        <form class="bg-[#F5D5E0] w-[600px] h-[500px] flex flex-col rounded-3xl" (ngSubmit)="loginUser()">
             <h1 class="m-auto text-[#210635] text-[50px] font-bold">
                 Login
             </h1>
@@ -15,14 +15,26 @@
                     <div class="w-[95px]">
                         <label class="" for="">Correo</label>
                     </div>
-                    <input class="border-[1px] border-black rounded-full w-[300px] h-[30px] px-[10px]" type="text">
-                </div>
+                        <input
+                            class="border-[1px] border-black rounded-full w-[300px] h-[30px] px-[10px]"
+                            type="text"
+                            name="email"
+                            [(ngModel)]="email"
+                            required
+                            />
+                    </div>
 
                 <div class="ml-0 my-auto flex">
                     <div class="w-[95px]">
                         <label class="" for="">Contraseña</label>
                     </div>
-                    <input class="border-[1px] border-black rounded-full w-[300px] h-[30px] px-[10px]" type="password">
+                    <input
+                        class="border-[1px] border-black rounded-full w-[300px] h-[30px] px-[10px]"
+                        type="password"
+                        name="password"
+                        [(ngModel)]="password"
+                        required
+                        />
                 </div>
 
                 <div class="flex text-[13px] mt-[15px]">
@@ -34,13 +46,11 @@
             </div>
 
             <div class="m-auto w-full h-[100px] flex justify-center items-center">
-                <a href="#">
                     <button class="border-[2px] text-xl font-bold border-[#420D4B] rounded-full h-[35px] w-[200px] bg-[#420D4B] text-[#F5D5E0]
-                            transition-shadow hover:shadow-xl hover:text-[#420D4B] hover:bg-[#F5D5E0] ho"
+                            transition-shadow hover:shadow-xl hover:text-[#420D4B] hover:bg-[#F5D5E0]"
                         type="submit">
                         Iniciar Sesion
                     </button>
-                </a>
 
                 <a class="text-xl font-bold h-[35px] px-3 ml-[15px] text-[#420D4B] duration-300 hover:text-[#7B337E]"
                     routerLink="/auth/register">Registrarse</a>
