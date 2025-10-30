@@ -1,0 +1,22 @@
+<div class="overflow-x-auto">
+  <table class="min-w-full border-collapse rounded-2xl overflow-hidden shadow-lg">
+    <thead class="bg-[#3b1a57] text-[#c084fc]">
+      <tr>
+        <th class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">ID</th>
+        <th class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Nombre</th>
+        <th class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Correo</th>
+        <th class="px-6 py-3 text-center text-sm font-semibold uppercase tracking-wider">Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody class="bg-[#221133] text-white divide-y divide-[#4b266e]/50">
+      <tr *ngFor="let user of users" class="hover:bg-[#3b1a57]/70 transition">
+        <td class="px-6 py-4">{{ user.id }}</td>
+        <td class="px-6 py-4">{{ user.nombre }}</td>
+        <td class="px-6 py-4">{{ user.email }}</td>
+        <td class="px-6 py-4 text-center">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

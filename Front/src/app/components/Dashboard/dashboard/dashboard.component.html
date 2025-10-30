@@ -14,9 +14,15 @@
     </nav>
 
     <!-- Botón de cerrar sesión -->
+    <!-- Botón de cerrar sesión -->
     <div class="p-4">
-      <button class="w-full bg-[#7B337E] py-2 rounded-lg hover:bg-[#6667AB] transition">Cerrar sesión</button>
+      <button 
+        (click)="logout()" 
+        class="w-full bg-[#7B337E] py-2 rounded-lg hover:bg-[#6667AB] transition">
+        Cerrar sesión
+      </button>
     </div>
+
   </aside>
 
   <!-- Contenido principal -->
@@ -24,6 +30,16 @@
     <h1 class="text-3xl font-bold text-[#210635] mb-6">Tareas</h1>
 
     <router-outlet></router-outlet>
+
+    <section class="min-h-screen bg-[#1a0b2e] flex flex-col items-center justify-center p-8">
+        <h1 class="text-4xl font-bold text-[#c084fc] mb-6">Usuarios Registrados</h1>
+
+        <div class="bg-[#2b1b47] shadow-xl rounded-3xl p-6 w-[90%] max-w-4xl border border-[#c084fc]/30">
+          <app-user-list></app-user-list>
+        </div>
+    </section>
+
+
 
 
 
