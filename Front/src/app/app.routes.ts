@@ -11,7 +11,7 @@ export const routes: Routes = [
     path: 'dashboard',
     loadChildren: () =>
       import('./components/Dashboard/dashboard.routes').then((m) => m.default),
-    canActivate: [AuthGuard] // 👈 protege el acceso al dashboard
+    canActivate: [AuthGuard]
   },
   {
     path: '',
