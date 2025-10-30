@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -9,7 +10,8 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () =>
-      import('./components/Dashboard/dashboard.routes').then((m) => m.default)
+      import('./components/Dashboard/dashboard.routes').then((m) => m.default),
+    canActivate: [AuthGuard] // 👈 protege el acceso al dashboard
   },
   {
     path: '',
