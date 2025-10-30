@@ -1,53 +1,80 @@
 <section class="flex">
     <div class="w-1/2 h-[100vh] bg-[#7B337E] flex justify-center items-center">
-        <form class="bg-[#F5D5E0] w-[600px] h-[500px] flex flex-col rounded-3xl" action="">
+        <form
+            class="bg-[#F5D5E0] w-[600px] h-[500px] flex flex-col rounded-3xl"
+            (ngSubmit)="onSubmit()"
+            >
             <h1 class="m-auto text-[#210635] text-[50px] font-bold">
                 Register
             </h1>
 
             <div class="m-auto w-full flex flex-col h-[250px] mt-10 px-[50px]">
                 <div class="ml-0 my-auto flex">
-                    <div class="w-[95px]">
-                        <label class="" for="">Nombre</label>
-                    </div>
-                    <input class="border-[1px] border-black rounded-full w-[300px] h-[30px] px-[10px]" type="text">
+                <div class="w-[95px]">
+                    <label>Nombre</label>
+                </div>
+                <input
+                    class="border-[1px] border-black rounded-full w-[300px] h-[30px] px-[10px]"
+                    type="text"
+                    [(ngModel)]="nombre"
+                    name="nombre"
+                />
                 </div>
 
                 <div class="ml-0 my-auto flex">
-                    <div class="w-[95px]">
-                        <label class="" for="">Correo</label>
-                    </div>
-                    <input class="border-[1px] border-black rounded-full w-[300px] h-[30px] px-[10px]" type="text">
+                <div class="w-[95px]">
+                    <label>Correo</label>
+                </div>
+                <input
+                    class="border-[1px] border-black rounded-full w-[300px] h-[30px] px-[10px]"
+                    type="email"
+                    [(ngModel)]="email"
+                    name="email"
+                />
                 </div>
 
                 <div class="ml-0 my-auto flex">
-                    <div class="w-[95px]">
-                        <label class="" for="">Contraseña</label>
-                    </div>
-                    <input class="border-[1px] border-black rounded-full w-[300px] h-[30px] px-[10px]" type="password">
+                <div class="w-[95px]">
+                    <label>Contraseña</label>
                 </div>
-                <div class="ml-0 my-auto flex">
-                    <div class="w-[95px]">
-                        <label class="leading-[16px] block" for="">Confirmar contraseña</label>
-                    </div>
-                    <input class="border-[1px] border-black rounded-full w-[300px] h-[30px] px-[10px]" type="password">
+                <input
+                    class="border-[1px] border-black rounded-full w-[300px] h-[30px] px-[10px]"
+                    type="password"
+                    [(ngModel)]="password"
+                    name="password"
+                />
                 </div>
 
+                <div class="ml-0 my-auto flex">
+                <div class="w-[95px]">
+                    <label class="leading-[16px] block">Confirmar contraseña</label>
+                </div>
+                <input
+                    class="border-[1px] border-black rounded-full w-[300px] h-[30px] px-[10px]"
+                    type="password"
+                    [(ngModel)]="confirmPassword"
+                    name="confirmPassword"
+                />
+                </div>
             </div>
 
             <div class="m-auto w-full h-[100px] flex justify-center items-center">
-                <a href="#">
-                    <button class="border-[2px] text-xl font-bold border-[#420D4B] rounded-full h-[35px] w-[200px] bg-[#420D4B] text-[#F5D5E0]
-                            transition-shadow hover:shadow-xl hover:text-[#420D4B] hover:bg-[#F5D5E0] ho"
-                        type="submit">
-                        Registrarse
-                    </button>
-                </a>
+                <button
+                class="border-[2px] text-xl font-bold border-[#420D4B] rounded-full h-[35px] w-[200px] bg-[#420D4B] text-[#F5D5E0]
+                        transition-shadow hover:shadow-xl hover:text-[#420D4B] hover:bg-[#F5D5E0]"
+                type="submit"
+                >
+                Registrarse
+                </button>
 
-                <a class="text-xl font-bold h-[35px] px-3 ml-[15px]  text-[#420D4B] duration-300 hover:text-[#7B337E]"
-                    routerLink="/auth/login">Iniciar sesion</a>
+                <a
+                class="text-xl font-bold h-[35px] px-3 ml-[15px] text-[#420D4B] duration-300 hover:text-[#7B337E]"
+                routerLink="/auth/login"
+                >Iniciar sesión</a
+                >
             </div>
-        </form>
+            </form>
+
     </div>
 
     <div class="w-1/2 h-[100vh] bg-[#F5D5E0] flex items-center justify-center p-25">

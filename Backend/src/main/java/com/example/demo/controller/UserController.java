@@ -34,6 +34,11 @@ public class UserController {
         return service.buscarPorId(id);
     }
 
+    @PostMapping("/auth/login")
+    public UserResponse login(@RequestBody UserRequest request) {
+        return service.login(request.getEmail(), request.getPassword());
+    }
+
     // Http://localhost:8080/user/id
     @PutMapping("/{id}")
     public UserResponse actualizar(@PathVariable Long id, @RequestBody UserRequest request){
