@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-  <link href="./output.css" rel="stylesheet">
-</head>
-<body class="flex h-screen bg-[#F5D5E0]">
+<section class="flex h-screen bg-[#F5D5E0]">
 
   <!-- Sidebar -->
   <aside class="w-64 bg-[#420D4B] text-white flex flex-col">
@@ -17,23 +9,41 @@
 
     <!-- Navegación -->
     <nav class="flex-1 p-4 space-y-3">
-      <a href="#" class="block px-3 py-2 rounded-lg bg-[#7B337E] hover:bg-[#6667AB] transition">Inicio</a>
-      <a href="#" class="block px-3 py-2 rounded-lg hover:bg-[#6667AB] transition">Tareas</a>
-      <a href="#" class="block px-3 py-2 rounded-lg hover:bg-[#6667AB] transition">Proyectos</a>
+      <a routerLink="/dashboard/tasks" class="block px-3 py-2 rounded-lg bg-[#7B337E] hover:bg-[#6667AB] transition">Tareas</a>
       <a href="#" class="block px-3 py-2 rounded-lg hover:bg-[#6667AB] transition">Configuración</a>
     </nav>
 
     <!-- Botón de cerrar sesión -->
+    <!-- Botón de cerrar sesión -->
     <div class="p-4">
-      <button class="w-full bg-[#7B337E] py-2 rounded-lg hover:bg-[#6667AB] transition">Cerrar sesión</button>
+      <button 
+        (click)="logout()" 
+        class="w-full bg-[#7B337E] py-2 rounded-lg hover:bg-[#6667AB] transition">
+        Cerrar sesión
+      </button>
     </div>
+
   </aside>
 
   <!-- Contenido principal -->
   <main class="flex-1 p-8 overflow-y-auto">
-    <h1 class="text-3xl font-bold text-[#210635] mb-6">Dashboard</h1>
+    <h1 class="text-3xl font-bold text-[#210635] mb-6">Tareas</h1>
 
-    <!-- Tarjetas -->
+    <router-outlet></router-outlet>
+
+    <section class="min-h-screen bg-[#1a0b2e] flex flex-col items-center justify-center p-8">
+        <h1 class="text-4xl font-bold text-[#c084fc] mb-6">Usuarios Registrados</h1>
+
+        <div class="bg-[#2b1b47] shadow-xl rounded-3xl p-6 w-[90%] max-w-4xl border border-[#c084fc]/30">
+          <app-user-list></app-user-list>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Tarjetas 
     <div class="grid grid-cols-3 gap-6">
       <div class="bg-[#7B337E] text-white p-6 rounded-2xl shadow hover:scale-105 transition-transform">
         <h3 class="text-lg font-semibold">Tareas pendientes</h3>
@@ -50,6 +60,6 @@
         <p class="text-3xl font-bold mt-2">3</p>
       </div>
     </div>
+    -->
   </main>
-</body>
-</html>
+</section>

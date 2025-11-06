@@ -1,0 +1,54 @@
+<section class="mx-auto w-full max-w-screen-sm px-4">
+  <!-- Loading State para cargar tarea -->
+  @if (loadingTask()) {
+    <div class="bg-[#F5D5E0] rounded-xl shadow-lg border border-[#7B337E] p-8">
+      <div class="flex items-center justify-center space-x-3">
+        <div class="animate-spin rounded-full h-8 w-8 border-4 border-[#7B337E] border-t-[#6667AB]"></div>
+        <span class="text-[#420D4B] font-semibold">Cargando tarea...</span>
+      </div>
+    </div>
+  }
+
+  <!-- Formulario -->
+  @if (!loadingTask()) {
+    <div class="bg-[#ffffff] rounded-xl shadow-lg border border-[#7B337E] p-8">
+      <form class="flex flex-col gap-6" [formGroup]="form" (ngSubmit)="submit()">
+
+        <!-- Nombre -->
+        <div class="flex flex-col">
+          <label class="text-[15px] text-[#420D4B] font-semibold mb-2">Nombre:</label>
+          <input
+            class="border-[1px] border-[#7B337E] px-[12px] py-[12px] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6667AB]/50 focus:border-[#3a8a9c] transition-all duration-200"
+            type="text" placeholder="Ingresa el nombre" formControlName="nombre" />
+          @if (form.controls['nombre'].invalid && form.controls['nombre'].touched) {
+            <small class="text-red-600 font-medium mt-1">Este campo es requerido</small>
+          }
+        </div>
+
+        <!-- Descripción -->
+        <div class="flex flex-col">
+          <label class="text-[15px] text-[#420D4B] font-semibold mb-2">Descripción:</label>
+          <textarea
+            class="border-[1px] border-[#7B337E] px-[12px] py-[12px] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6667AB]/50 focus:border-[#3a8a9c] transition-all duration-200"
+            formControlName="descripcion" rows="3" placeholder="Describe la tarea"></textarea>
+        </div>
+
+        <!-- Estado -->
+        <div class="flex flex-col">
+          <label class="inline-flex items-center cursor-pointer">
+            <input formControlName="estado" type="checkbox" class="sr-only peer">
+            <div class="border-[1px] border-[#7B337E] relative w-11 h-6 bg-[#ffffff] rounded-full peer peer-checked:border-none peer-checked:bg-[#3a9c5b]"></div>
+            <span class="ms-3 text-sm font-semibold text-[#420D4B]">Completado</span>
+          </label>
+        </div>
+
+        <button type="submit"
+          [disabled]="loading()"
+          class="bg-[#7B337E] h-[45px] w-[200px] text-white text-[20px] font-semibold rounded-lg transition-all duration-300 shadow-lg disabled:opacity-50 flex justify-center items-center">
+          <span *ngIf="loading()" class="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent mr-2"></span>
+          {{ isEditMode ? 'Actualizar tarea' : 'Crear tarea' }}
+        </button>
+      </form>
+    </div>
+  }
+</section>
