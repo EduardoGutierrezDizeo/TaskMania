@@ -13,7 +13,7 @@ export interface User {
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8080/user'; // URL del backend
+  private apiUrl = 'https://backendtaskmania-production.up.railway.app/user'; // URL del backend
 
   constructor(private http: HttpClient) {}
 
