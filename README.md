@@ -486,19 +486,19 @@ DELETE	/task/delete/{id}	Elimina una tarea por ID
 🖼️ Capturas de Pantalla (UI)
 🔐 Pantalla de Login
 
-![alt text](image-4.png)
+![alt text](./image.png)
 
 🧾 Pantalla de Registro
 
-![alt text](image-5.png)
+![alt text](./image-1.png)
 
 📋 Dashboard de Tareas
 
-![alt text](image-6.png)
+![alt text](./image-2.png)
 
 👥 Vista de Usuarios (Administrador)
 
-![alt text](image-7.png)
+![alt text](./image-3.png)
 
 📂 Estructura Global del Proyecto
 TaskMania/
