@@ -14,7 +14,7 @@ export interface Task {
 })
 export class TaskService {
 
-  private apiUrl = 'Http://localhost:8080/task';
+  private apiUrl = 'https://backendtaskmania-production.up.railway.app/task';
 
   constructor(private http: HttpClient) { }
 
