@@ -374,3 +374,163 @@ Asegúrate de iniciar el servidor MySQL antes de ejecutar el backend para evitar
 
 
 
+# 🖥️ Backend (Spring Boot)
+
+El backend de **TaskMania** fue desarrollado utilizando **Spring Boot v3.5.5**, bajo una arquitectura **RESTful**.  
+Su función principal es **gestionar la lógica de negocio del sistema**, procesar las solicitudes HTTP provenientes del frontend y comunicarse con la base de datos **MySQL** para almacenar y recuperar información.
+
+### ⚙️ Características principales
+- API REST con controladores para usuarios y tareas.  
+- Sistema de autenticación mediante **JWT (JSON Web Tokens)**.  
+- Gestión de roles y permisos (usuario y administrador).  
+- Manejo de excepciones personalizadas.  
+- Conexión segura con MySQL mediante **JPA/Hibernate**.
+
+### 🧱 Estructura básica de paquetes
+src/
+└── main/
+├── java/com/taskmania/
+│ ├── controller/ → Controladores REST (UserController, TaskController)
+│ ├── model/ → Entidades JPA (User, Task)
+│ ├── repository/ → Interfaces de persistencia (UserRepository, TaskRepository)
+│ ├── service/ → Lógica de negocio (UserService, TaskService)
+│ ├── security/ → Configuración JWT y filtros de autenticación
+│ └── TaskmaniaApplication.java → Clase principal del proyecto
+└── resources/
+├── application.properties → Configuración de la base de datos y servidor
+└── static/ y templates/ → Recursos adicionales (si aplica)
+
+---
+
+## 💻 Frontend (Angular)
+
+El **frontend** fue desarrollado con **Angular v19.2.0** y **TailwindCSS**, ofreciendo una interfaz moderna, responsiva y centrada en la experiencia del usuario.  
+Se conecta al backend mediante **servicios HTTP**, consumiendo los endpoints REST y mostrando los datos de forma dinámica.
+
+### ⚙️ Características principales
+- Módulos independientes para autenticación y gestión de tareas.  
+- Sistema de rutas con protección mediante **AuthGuard**.  
+- Formularios reactivos con validaciones.  
+- Notificaciones personalizadas con **SweetAlert2**.  
+- Modo oscuro y diseño moderno con **TailwindCSS**.
+
+### 🧱 Estructura general del frontend
+
+src/
+├── app/
+│ ├── auth/ → Login, registro y recuperación de contraseña
+│ ├── dashboard/ → Vista principal con las tareas del usuario
+│ ├── users/ → Listado y gestión de usuarios (solo admin)
+│ ├── services/ → Servicios que consumen la API (user.service.ts, task.service.ts)
+│ ├── guards/ → Protección de rutas (auth.guard.ts)
+│ ├── components/ → Componentes reutilizables
+│ └── app-routing.module.ts / app.module.ts
+├── assets/ → Recursos estáticos (logos, íconos, etc.)
+├── environments/ → Configuración de entornos (API_URL)
+└── index.html / main.ts → Archivos raíz del proyecto Angular
+
+
+
+---
+
+## 🗄️ Base de Datos (MySQL)
+
+**Motor:** MySQL  
+**Nombre:** `taskmania_db`
+
+### 🧍 Tabla: users
+| Campo | Tipo | Descripción |
+|-------|------|-------------|
+| id | INT (PK, autoincrement) | Identificador único del usuario |
+| username | VARCHAR | Nombre de usuario |
+| email | VARCHAR | Correo electrónico |
+| password | VARCHAR | Contraseña encriptada |
+| role | VARCHAR | Rol del usuario (USER / ADMIN) |
+| created_at | DATETIME | Fecha de creación |
+
+### 📝 Tabla: tasks
+| Campo | Tipo | Descripción |
+|-------|------|-------------|
+| id | INT (PK, autoincrement) | Identificador único de la tarea |
+| title | VARCHAR | Título de la tarea |
+| description | TEXT | Descripción detallada |
+| status | VARCHAR | Estado (pendiente, completada, etc.) |
+| user_id | INT (FK → users.id) | Usuario propietario |
+| created_at | DATETIME | Fecha de creación |
+| updated_at | DATETIME | Última actualización |
+
+### ⚙️ Configuración en `application.properties`
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/taskmania_db
+spring.datasource.username=root
+spring.datasource.password=
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+server.port=8080
+
+🌐 Endpoints del Backend
+🔹 Autenticación (UserController)
+Método	Endpoint	Descripción
+POST	/user/auth/register	Registro de nuevo usuario
+POST	/user/auth/login	Inicio de sesión y generación de token JWT
+GET	/user/list	Obtiene todos los usuarios (solo admin)
+🔹 Tareas (TaskController)
+Método	Endpoint	Descripción
+GET	/task/all	Lista todas las tareas del usuario autenticado
+POST	/task/create	Crea una nueva tarea
+PUT	/task/update/{id}	Actualiza una tarea existente
+DELETE	/task/delete/{id}	Elimina una tarea por ID
+
+
+🖼️ Capturas de Pantalla (UI)
+🔐 Pantalla de Login
+
+![alt text](./image.png)
+
+🧾 Pantalla de Registro
+
+![alt text](./image-1.png)
+
+📋 Dashboard de Tareas
+
+![alt text](./image-2.png)
+
+👥 Vista de Usuarios (Administrador)
+
+![alt text](./image-3.png)
+
+📂 Estructura Global del Proyecto
+TaskMania/
+ ├── backend/
+ │    ├── src/
+ │    └── pom.xml
+ │
+ ├── frontend/
+ │    ├── src/
+ │    └── angular.json
+ │
+ ├── base_de_datos/
+ │    └── script_taskmania.sql
+ │
+ ├── documentación/
+ │    ├── Parte1.md
+ │    └── Parte2.md
+ │
+ └── README.md
+
+✅ Estado del Proyecto
+
+Frontend desplegado en Firebase:
+🔗 https://taskmania-16283.web.app
+
+Backend desplegado en Railway:
+🔗 https://backendtaskmania-production.up.railway.app
+
+👥 Integrantes del Proyecto
+
+Andrés Ballesteros — Frontend Developer (Angular / Firebase)
+
+[Nombre del compañero] — Backend Developer (Spring Boot / MySQL)
+
+🧠 TaskMania busca optimizar la gestión de tareas personales y colaborativas mediante una plataforma moderna, accesible y escalable.
