@@ -1,22 +1,56 @@
-<div class="overflow-x-auto">
-  <table class="min-w-full border-collapse rounded-2xl overflow-hidden shadow-lg">
-    <thead class="bg-[#3b1a57] text-[#c084fc]">
-      <tr>
-        <th class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">ID</th>
-        <th class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Nombre</th>
-        <th class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Correo</th>
-        <th class="px-6 py-3 text-center text-sm font-semibold uppercase tracking-wider">Acciones</th>
-      </tr>
-    </thead>
+<h2 class="text-2xl font-bold mb-4 text-white">Usuarios Registrados</h2>
 
-    <tbody class="bg-[#221133] text-white divide-y divide-[#4b266e]/50">
-      <tr *ngFor="let user of users" class="hover:bg-[#3b1a57]/70 transition">
-        <td class="px-6 py-4">{{ user.id }}</td>
-        <td class="px-6 py-4">{{ user.nombre }}</td>
-        <td class="px-6 py-4">{{ user.email }}</td>
-        <td class="px-6 py-4 text-center">
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<table class="w-full text-left border border-gray-700 text-white">
+  <thead>
+    <tr class="bg-purple-900 text-white">
+      <th class="p-2">IDadsdasdad</th>
+      <th class="p-2">Nombre</th>
+      <th class="p-2">Email</th>
+      <th class="p-2">Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of users" class="border-b border-gray-600">
+      <td class="p-2 text-white">{{ user.id }}</td>
+      <td class="p-2 text-white">{{ user.nombre }}</td>
+      <td class="p-2 text-white">{{ user.email }}</td>
+      <td class="p-2 space-x-2">
+        
+        <!-- Botón Editar - Morado suave -->
+        <button class="px-3 py-1 rounded text-white" 
+                style="background-color: #b388ff;" 
+                (click)="openEdit(user)">
+          Editar
+        </button>
+
+        <!-- Botón Eliminar - Morado más oscuro -->
+        <button class="px-3 py-1 rounded text-white" 
+                style="background-color: #7c4dff;" 
+                (click)="deleteUser(user.id!)">
+          Eliminar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal de Edición -->
+<div *ngIf="editingUser" class="fixed inset-0 bg-black/50 flex items-center justify-center">
+  <div class="bg-gray-800 p-6 rounded-lg w-96">
+    <h2 class="text-xl mb-3 text-white">Editar Usuario</h2>
+
+    <label class="text-white">Nombre</label>
+    <input class="w-full mb-3 p-2 rounded bg-gray-700 text-white" [(ngModel)]="editingUser.nombre">
+
+    <label class="text-white">Email</label>
+    <input class="w-full mb-3 p-2 rounded bg-gray-700 text-white" [(ngModel)]="editingUser.email">
+
+    <div class="flex justify-between mt-4">
+      <button class="px-4 py-2 rounded text-white" style="background-color: #4caf50;" (click)="saveEdit()">Guardar</button>
+      <button class="px-4 py-2 rounded text-white" style="background-color: #616161;" (click)="cancelEdit()">Cancelar</button>
+    </div>
+  </div>
 </div>
+
+
