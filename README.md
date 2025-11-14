@@ -486,19 +486,19 @@ DELETE	/task/delete/{id}	Elimina una tarea por ID
 🖼️ Capturas de Pantalla (UI)
 🔐 Pantalla de Login
 
-![alt text](./image.png)
+![Pantalla de Login](https://raw.githubusercontent.com/EduardoGutierrezDizeo/TaskMania/master/image.png)
 
 🧾 Pantalla de Registro
 
-![alt text](./image-1.png)
+![Pantalla de Registro](https://raw.githubusercontent.com/EduardoGutierrezDizeo/TaskMania/master/image-1.png)
 
 📋 Dashboard de Tareas
 
-![alt text](./image-2.png)
+![Dashboard de Tareas](https://raw.githubusercontent.com/EduardoGutierrezDizeo/TaskMania/master/image-2.png)
 
 👥 Vista de Usuarios (Administrador)
 
-![alt text](./image-3.png)
+![Vista de Usuarios](https://raw.githubusercontent.com/EduardoGutierrezDizeo/TaskMania/master/image-3.png)
 
 📂 Estructura Global del Proyecto
 TaskMania/
@@ -531,6 +531,6 @@ Backend desplegado en Railway:
 
 Andrés Ballesteros — Frontend Developer (Angular / Firebase)
 
-[Nombre del compañero] — Backend Developer (Spring Boot / MySQL)
+Eduardo José Gutiérrez De Piñérez Dizeo — Backend Developer (Spring Boot / MySQL)
 
 🧠 TaskMania busca optimizar la gestión de tareas personales y colaborativas mediante una plataforma moderna, accesible y escalable.
